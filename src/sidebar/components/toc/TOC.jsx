@@ -2,7 +2,7 @@
 import React, { Component } from "react";
 import ReactDOM from "react-dom";
 import { isMobile } from "react-device-detect";
-import arrayMove from "array-move";
+import {arrayMoveImmutable} from "array-move";
 
 //CUSTOM
 import * as TOCHelpers from "./common/TOCHelpers.jsx";
@@ -600,7 +600,7 @@ class TOC extends Component {
 			return;
 		}
 		let group = Object.assign({}, this.state.selectedGroup);
-		TOCHelpers.updateLayerIndex(arrayMove(group.layers, oldIndex, newIndex), (result) => {
+		TOCHelpers.updateLayerIndex(arrayMoveImmutable(group.layers, oldIndex, newIndex), (result) => {
 			group.layers = result.map((layer) => {
 				layer.index = layer.drawIndex;
 				return layer;
